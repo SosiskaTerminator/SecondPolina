@@ -7,7 +7,6 @@ int inputStr(Str& a, fstream& f)
 {
     f.unsetf(ios::skipws);
 
-    // Динамический буфер, который расширяется при необходимости
     int capacity = 100;
     a.pA = new char[capacity];
     a.Len = 0;
@@ -19,7 +18,6 @@ int inputStr(Str& a, fstream& f)
         if (f.eof() || ch == '\n')
             break;
 
-        // Если достигли предела, расширяем буфер
         if (a.Len >= capacity - 1)
         {
             capacity *= 2;
@@ -34,7 +32,6 @@ int inputStr(Str& a, fstream& f)
         a.Len++;
     }
 
-    // Добавляем завершающий нуль
     if (a.Len >= capacity)
     {
         char* newBuffer = new char[a.Len + 1];

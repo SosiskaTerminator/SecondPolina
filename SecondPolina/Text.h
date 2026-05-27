@@ -7,8 +7,8 @@ using namespace std;
 
 struct Text
 {
-    unsigned L;     // количество строк
-    Str** pS;       // двойной указатель на строки
+    unsigned L;
+    Str** pS;
 };
 
 #endif

@@ -6,7 +6,6 @@ using namespace std;
 
 int inputText(Text& A, fstream& f)
 {
-    // Очистка предыдущего текста
     if (A.pS != nullptr)
         clearText(A);
 
@@ -14,7 +13,6 @@ int inputText(Text& A, fstream& f)
     f.unsetf(ios::skipws);
     streampos startPos = f.tellg();
 
-    // Подсчет количества строк
     A.L = 0;
     while (!f.eof())
     {
@@ -24,7 +22,6 @@ int inputText(Text& A, fstream& f)
             A.L++;
     }
 
-    // Проверяем, есть ли последняя строка без \n
     f.clear();
     f.seekg(-1, ios::end);
     f >> ch;
@@ -32,21 +29,17 @@ int inputText(Text& A, fstream& f)
         A.L++;
     }
 
-    // Возврат к началу файла
     f.clear();
     f.seekg(startPos);
 
-    // Если файл пуст
     if (A.L == 0)
     {
         A.pS = nullptr;
         return 0;
     }
 
-    // Выделение памяти под массив указателей (двойной указатель)
     A.pS = new Str * [A.L];
 
-    // Чтение всех строк
     for (unsigned i = 0; i < A.L; i++)
     {
         A.pS[i] = new Str;

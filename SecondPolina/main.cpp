@@ -7,13 +7,11 @@
 using namespace std;
 
 int main() {
-    // Настройка кодировки для русского языка
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
 
     Text txt = { 0, nullptr };
 
-    // Чтение из файла
     fstream f;
     f.open("text.txt", ios::in);
     if (!f.is_open())
@@ -29,14 +27,12 @@ int main() {
         return 0;
     }
 
-    // Возвращаемся в начало для чтения программой
     f.clear();
     f.seekg(0);
 
     inputText(txt, f);
     f.close();
 
-    // Запись в файл
     ofstream fout;
     fout.open("result.txt", ios::out);
     if (!fout.is_open())
@@ -49,7 +45,6 @@ int main() {
     cout << "\nПрочитанные строки:" << endl;
     outText(txt, fout);
 
-    // Обработка текста (переворот слов)
     process(txt);
 
     fout << "\nТекст после обработки:" << endl;
@@ -57,7 +52,6 @@ int main() {
 
     fout.close();
 
-    // Очистка памяти
     clearText(txt);
 
     cout << "\nПрограмма успешно завершена" << endl;
