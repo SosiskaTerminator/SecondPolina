@@ -1,5 +1,4 @@
-﻿#include <iostream>
-#include <fstream>
+﻿#include <fstream>
 #include <windows.h>
 #include "defStr.h"
 #include "defText.h"
@@ -43,15 +42,17 @@ int main() {
     }
 
     cout << "\nПрочитанные строки:" << endl;
+    outTextToConsole(txt);
     outText(txt, fout);
 
     process(txt);
 
     fout << "\nТекст после обработки:" << endl;
+    cout << "\nТекст после обработки:" << endl;
+    outTextToConsole(txt);
     outText(txt, fout);
 
     fout.close();
-
     clearText(txt);
 
     cout << "\nПрограмма успешно завершена" << endl;

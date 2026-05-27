@@ -8,7 +8,7 @@ using namespace std;
 struct Text
 {
     unsigned L;
-    Str** pS;
+    Str* pS;
 };
 
 #endif

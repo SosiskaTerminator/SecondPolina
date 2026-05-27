@@ -38,36 +38,33 @@ int inputText(Text& A, fstream& f)
         return 0;
     }
 
-    A.pS = new Str * [A.L];
+    A.pS = new Str[A.L];
 
     for (unsigned i = 0; i < A.L; i++)
     {
-        A.pS[i] = new Str;
-        A.pS[i]->pA = nullptr;
-        A.pS[i]->Len = 0;
-        inputStr(*A.pS[i], f);
+        A.pS[i].pA = nullptr;
+        A.pS[i].Len = 0;
+        inputStr(A.pS[i], f);
     }
 
     return 0;
-}
-
-void outStrToFile(Str& str, ofstream& fout)
-{
-    if (str.pA != nullptr)
-    {
-        fout << str.pA << endl;
-        cout << str.pA << endl;
-    }
 }
 
 void outText(Text& A, ofstream& fout)
 {
     for (unsigned i = 0; i < A.L; i++)
     {
-        if (A.pS[i] != nullptr)
-        {
-            outStrToFile(*A.pS[i], fout);
-        }
+        outStr(A.pS[i], fout);
+        fout << endl;
+    }
+}
+
+void outTextToConsole(Text& A)
+{
+    for (unsigned i = 0; i < A.L; i++)
+    {
+        outStrToConsole(A.pS[i]);
+        cout << endl;
     }
 }
 
@@ -78,12 +75,7 @@ void clearText(Text& t)
 
     for (unsigned i = 0; i < t.L; i++)
     {
-        if (t.pS[i] != nullptr)
-        {
-            clearStr(*t.pS[i]);
-            delete t.pS[i];
-            t.pS[i] = nullptr;
-        }
+        clearStr(t.pS[i]);
     }
 
     delete[] t.pS;

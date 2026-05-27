@@ -4,6 +4,7 @@
 
 int inputText(Text&, fstream&);
 void outText(Text&, ofstream&);
+void outTextToConsole(Text&);
 void clearText(Text&);
 
 #endif
