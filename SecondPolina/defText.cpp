@@ -51,14 +51,22 @@ int inputText(Text& A, fstream& f)
     return 0;
 }
 
+void outStrToFile(Str& str, ofstream& fout)
+{
+    if (str.pA != nullptr)
+    {
+        fout << str.pA << endl;
+        cout << str.pA << endl;
+    }
+}
+
 void outText(Text& A, ofstream& fout)
 {
     for (unsigned i = 0; i < A.L; i++)
     {
-        if (A.pS[i] != nullptr && A.pS[i]->pA != nullptr)
+        if (A.pS[i] != nullptr)
         {
-            fout << A.pS[i]->pA << endl;
-            cout << A.pS[i]->pA << endl;
+            outStrToFile(*A.pS[i], fout);
         }
     }
 }
